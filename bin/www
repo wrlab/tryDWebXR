@@ -5,8 +5,10 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('aframe-gundbddddd:server');
+var debug = require('debug')('aframe-gundb:server');
 var http = require('http');
+
+var Gun = require('gun');
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +22,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+var gun = Gun({web: server});
 
 /**
  * Listen on provided port, on all network interfaces.
