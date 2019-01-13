@@ -1,3 +1,5 @@
+// it is loaded !before! loading a-scene
+
 /**
  * HOW TO REFRESH ROOT (fake)
  *
@@ -7,12 +9,15 @@
  */
 const gun = Gun('http://192.168.1.77:3000/gun');
 
-let test = '0113-02';
+let test = '0113-03';
 let sceneG = gun.get('root').get( 'scene'+test );
 let namesG = gun.get('root').get( 'names'+test );
+let gridG = sceneG.get('grid');
 
 let name = getName();
 let nameG = namesG.get(name).get('name').put(name);
+
+
 // todo 중복체크
 
 /**
