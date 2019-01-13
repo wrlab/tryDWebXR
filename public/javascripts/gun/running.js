@@ -1,4 +1,9 @@
 /**
+ * draw scene by gun data
+ */
+
+
+/**
  * synchronize position of balloons
  */
 
