@@ -1,5 +1,5 @@
 // it is loaded !after! loading a-scene
-
+let first = true;
 
 let camera = getCamera();
 let sceneEl = document.querySelector('a-scene');
@@ -25,7 +25,7 @@ function setRoot( data ){
     namesG.get( name ).get('name').put( name );
 
     gridG = sceneG.get('grid');
-    gridG.get('length').put( -1 );
+    // gridG.get('length').put( -1 );
 
 }
 
@@ -45,10 +45,11 @@ function getCamera(){
 }
 
 function createGrid( w, h ){
+    console.log('create grid')
 
     gridG.get('width').put( w );
     gridG.get('height').put( h );
-    gridG.get('length').put( w*h );
+    gridG.get('length').put( w * h );
 
     let maxW, maxH; // initial position
     let intervalW = 1;

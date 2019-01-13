@@ -13,7 +13,13 @@ gun.get('root').get('version').on(( data )=>{
  * draw grid
  */
 gridG.get('length').on(function( data, key ){
-    resetGrid();
+    if( first ){
+        first = false;
+    }else{
+        console.log('length: ' + data );
+        resetGrid();
+    }
+
 });
 
 gridG.get('planes').map().on(function( data, key ){
