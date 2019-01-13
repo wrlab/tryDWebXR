@@ -1,6 +1,15 @@
 // for sharing data
 
 /**
+ * reset root
+ */
+
+gun.get('root').get('string').on(( data )=>{
+    setRoot( data );
+});
+
+
+/**
  * draw grid
  */
 gridG.get('length').on(function( data, key ){
@@ -10,7 +19,7 @@ gridG.get('length').on(function( data, key ){
 gridG.get('planes').map().on(function( data, key ){
 
     let length;
-    gridG.get('length').once((data)=>{
+    gridG.get('length').once(( data )=>{
         length = data;
     });
     if( (length !== -1) && (length !== undefined)){

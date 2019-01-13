@@ -9,21 +9,25 @@
  */
 const gun = Gun('http://192.168.1.77:3000/gun');
 
-let test = '0113-03';
-let sceneG = gun.get('root').get( 'scene'+test );
-let namesG = gun.get('root').get( 'names'+test );
-let gridG = sceneG.get('grid');
+let sceneG, namesG, gridG, nameG;
+let name = setName();
+setString('0113-04');
 
-let name = getName();
-let nameG = namesG.get(name).get('name').put(name);
+function setString( string ) {
+    gun.get('root').get('string').put(string);
+}
 
-
-// todo 중복체크
+function setRoot( string ){
+    sceneG = gun.get('root').get( 'scene'+ string );
+    namesG = gun.get('root').get( 'names'+ string );
+    gridG = sceneG.get('grid');
+    nameG = namesG.get( name ).get( 'name' ).put( name );
+}
 
 /**
  * get name
  */
-function getName(){
+function setName(){
     let first = ['똥닦는', '간절한', '품위있는', '위험한', '치명적인',
         '야비한', '용기있는', '멍청한', '달콤한', '의리의',
         '촉촉한', '게으른', '낮잠자는', '모태솔로'];
