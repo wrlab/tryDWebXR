@@ -37,7 +37,7 @@ sceneG.get('grid').get('planes').map().on(function( data, key ){
 });
 
 /**
- * synchronize position of balloons
+ * synchronize position of balloons without saving at html
  */
 
 sceneG.get('balloons').map().on(function(data, key){
@@ -46,7 +46,7 @@ sceneG.get('balloons').map().on(function(data, key){
     if( object !== undefined ) {
         // console.log(object);
         this.get('position').once(function (data) {
-            // console.log(data);
+            console.log(data);
             object.position.copy(data);
         });
     }

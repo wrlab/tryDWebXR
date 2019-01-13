@@ -89,3 +89,16 @@ function resetGrid(){
     sceneEl.appendChild( gridEl );
     console.log('Reset grid.');
 }
+/**
+ * initialize position of balloons
+ */
+
+sceneG.get('balloons').map().once(function(data, key){
+    let el = document.querySelector('#'+key);
+    let object = el.object3D;
+    if( object !== undefined ) {
+        this.get('position').once(function (data) {
+            el.setAttribute('position', data);
+        });
+    }
+});
