@@ -12,8 +12,9 @@ let gridEl = document.querySelector('#grid');
  */
 
 function setVersion( v ) {
-    gun.get('root').get('version').put( v );
-    //return string + version;
+    gun.get('root').get('version').put( v ).later(()=>{
+        gun.get('root').get( 'scene'+ v ).get('grid').get('length').put(-1);
+    }, 1);
 }
 
 function setRoot( data ){
@@ -44,13 +45,16 @@ function getCamera(){
     return camera;
 }
 
-function createGrid( w, h ){
-    console.log('create grid')
+function setGrid(w, h){
 
     gridG.get('width').put( w );
     gridG.get('height').put( h );
     gridG.get('length').put( w * h );
 
+}
+
+function createGrid( w, h ){
+    console.log('create grid')
     let maxW, maxH; // initial position
     let intervalW = 1;
     let intervalH = 1;
@@ -70,9 +74,15 @@ function createGrid( w, h ){
         for( let j = 0; j < h; j++ ){
             let width = maxW - i*intervalW;
             let height = maxH - j*intervalH;
-            let planeG = gridG.get('planes').get( 'w'+i+'h'+j );
-            planeG.get('width').put(width);
-            planeG.get('height').put(height);
+            let id = 'w'+i+'h'+j;
+
+            planeEl = document.createElement('a-entity');
+            planeEl.setAttribute('id', id);
+            planeEl.setAttribute('mixin', 'grid-plane');
+            planeEl.setAttribute('position', { x: width, y: 0, z: height });
+            gridEl.appendChild(planeEl);
+            gridG.get('planes').get( id );
+
         }
     }
 }
