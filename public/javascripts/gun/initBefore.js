@@ -8,10 +8,10 @@
  * 3] let everyone refresh page.
  */
 const gun = Gun('http://192.168.1.77:3000/gun');
-let version = '0113-06'
+let version = '0113-2120'
 let sceneG = gun.get('root').get( 'scene'+ version );
 let namesG = gun.get('root').get( 'names'+ version );
-let gridG = sceneG.get('grid');
+
 
 let name = setName();
 namesG.get( name ).get( 'name' ).put( name );

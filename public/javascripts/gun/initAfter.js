@@ -1,5 +1,5 @@
 // it is loaded !after! loading a-scene
-let first = true;
+// let first = true;
 
 let camera = getCamera();
 let sceneEl = document.querySelector('a-scene');
@@ -11,27 +11,18 @@ let gridEl = document.querySelector('#grid');
  * reset root string of gundb
  */
 
-function setVersion( v ) {
-    gun.get('root').get('version').put( v ).later(()=>{
-        gun.get('root').get( 'scene'+ v ).get('grid').get('length').put(-1);
-    }, 1);
-}
-
-function setRoot( data ){
-    console.log(name);
-    version = data;
-
-    sceneG = gun.get('root').get( 'scene'+ version );
-    namesG = gun.get('root').get( 'names'+ version );
-    namesG.get( name ).get('name').put( name );
-
-    gridG = sceneG.get('grid');
-    // gridG.get('length').put( -1 );
-
-}
-
-
-
+// function setVersion( v ) {
+//     gun.get('root').get('version').put( v );
+// }
+//
+// function setRoot( data ){
+//     console.log(name);
+//     version = data;
+//
+//     sceneG = gun.get('root').get( 'scene'+ version );
+//     namesG = gun.get('root').get( 'names'+ version );
+//     namesG.get( name ).get('name').put( name );
+// }
 
 function getCamera(){
     let cameras = document.querySelectorAll('[camera]');
@@ -46,15 +37,16 @@ function getCamera(){
 }
 
 function setGrid(w, h){
-
+    let gridG = sceneG.get('grid');
     gridG.get('width').put( w );
     gridG.get('height').put( h );
     gridG.get('length').put( w * h );
+    console.log('set grid');
 
 }
 
 function createGrid( w, h ){
-    console.log('create grid')
+    console.log('create grid');
     let maxW, maxH; // initial position
     let intervalW = 1;
     let intervalH = 1;
@@ -76,19 +68,19 @@ function createGrid( w, h ){
             let height = maxH - j*intervalH;
             let id = 'w'+i+'h'+j;
 
-            planeEl = document.createElement('a-entity');
+            let planeEl = document.createElement('a-entity');
             planeEl.setAttribute('id', id);
             planeEl.setAttribute('mixin', 'grid-plane');
             planeEl.setAttribute('position', { x: width, y: 0, z: height });
             gridEl.appendChild(planeEl);
-            gridG.get('planes').get( id );
+            sceneG.get('grid').get('planes').get( id );
 
         }
     }
 }
 
 function resetGrid(){
-
+    gridEl = document.querySelector('#grid');
     if( gridEl ){
         sceneEl.removeChild( gridEl );
     }

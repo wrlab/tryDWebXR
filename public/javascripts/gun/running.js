@@ -3,24 +3,36 @@
 /**
  * reset root
  */
-
-gun.get('root').get('version').on(( data )=>{
-    setRoot( data );
-    console.log( 'reset root');
-});
+//
+// gun.get('root').get('version').on(( data )=>{
+//     if( first ){
+//         first = false;
+//     }else{
+//         setRoot( data );
+//         console.log( 'reset root');
+//         resetGrid();
+//     }
+//
+// });
 
 /**
  * draw grid
  */
-gridG.get('length').on(function( data, key ){
+sceneG.get('grid').get('length').on(function( data, key ){
 
     resetGrid();
-    gridG.once((data)=>{
-        createGrid(data.width, data.height);
-    });
+    console.log(data)
+    console.log('draw grid')
+    if( data > 0){
+        sceneG.get('grid').once((data)=>{
+            console.log(data.width, data.height);
+            createGrid(data.width, data.height);
+        });
+    }
+
 });
 
-gridG.get('planes').map().on(function( data, key ){
+sceneG.get('grid').get('planes').map().on(function( data, key ){
 
 });
 
