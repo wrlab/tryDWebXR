@@ -1,8 +1,36 @@
 // it is loaded !after! loading a-scene
-let camera = getCamera();;
+
+
+let camera = getCamera();
 let sceneEl = document.querySelector('a-scene');
 let gridEl = document.querySelector('#grid');
-gridG.get('length').put( -1 );
+
+
+
+/**
+ * reset root string of gundb
+ */
+
+function setVersion( v ) {
+    gun.get('root').get('version').put( v );
+    //return string + version;
+}
+
+function setRoot( data ){
+    console.log(name);
+    version = data;
+
+    sceneG = gun.get('root').get( 'scene'+ version );
+    namesG = gun.get('root').get( 'names'+ version );
+    namesG.get( name ).get('name').put( name );
+
+    gridG = sceneG.get('grid');
+    gridG.get('length').put( -1 );
+
+}
+
+
+
 
 function getCamera(){
     let cameras = document.querySelectorAll('[camera]');

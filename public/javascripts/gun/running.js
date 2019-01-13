@@ -4,10 +4,10 @@
  * reset root
  */
 
-gun.get('root').get('string').on(( data )=>{
+gun.get('root').get('version').on(( data )=>{
     setRoot( data );
+    console.log( 'reset root');
 });
-
 
 /**
  * draw grid
