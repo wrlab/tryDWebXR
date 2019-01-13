@@ -21,8 +21,6 @@
 sceneG.get('grid').get('length').on(function( data, key ){
 
     resetGrid();
-    console.log(data)
-    console.log('draw grid')
     if( data > 0){
         sceneG.get('grid').once((data)=>{
             console.log(data.width, data.height);
@@ -32,8 +30,13 @@ sceneG.get('grid').get('length').on(function( data, key ){
 
 });
 
-sceneG.get('grid').get('planes').map().on(function( data, key ){
-
+sceneG.get('grid').get('seats').map().on(function( data, key ){
+    let id = key;
+    let owner = data.owner;
+    let el = document.querySelector('#'+ id );
+    if(el){
+        el.setAttribute('seat', {owner: owner});
+    }
 });
 
 /**

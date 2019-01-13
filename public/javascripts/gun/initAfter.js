@@ -1,5 +1,5 @@
 // it is loaded !after! loading a-scene
-// let first = true;
+let first = true;
 
 let camera = getCamera();
 let sceneEl = document.querySelector('a-scene');
@@ -41,8 +41,6 @@ function setGrid(w, h){
     gridG.get('width').put( w );
     gridG.get('height').put( h );
     gridG.get('length').put( w * h );
-    console.log('set grid');
-
 }
 
 function createGrid( w, h ){
@@ -72,11 +70,16 @@ function createGrid( w, h ){
             planeEl.setAttribute('id', id);
             planeEl.setAttribute('mixin', 'grid-plane');
             planeEl.setAttribute('position', { x: width, y: 0, z: height });
+            planeEl.setAttribute('seat', {owner: 'none'});
             gridEl.appendChild(planeEl);
-            sceneG.get('grid').get('planes').get( id );
+
+            if( !first ){
+                sceneG.get('grid').get('seats').get( id ).get('owner').put('none');
+            }
 
         }
     }
+    first = false;
 }
 
 function resetGrid(){
@@ -87,8 +90,8 @@ function resetGrid(){
     gridEl = document.createElement('a-entity');
     gridEl.setAttribute('id', 'grid');
     sceneEl.appendChild( gridEl );
-    console.log('Reset grid.');
 }
+
 /**
  * initialize position of balloons
  */
@@ -102,3 +105,14 @@ sceneG.get('balloons').map().once(function(data, key){
         });
     }
 });
+
+sceneG.get('grid').get('seats').map().once(function( data, key ){
+    let id = key;
+    let owner = data.owner;
+    let el = document.querySelector('#'+ id );
+    if(el){
+        el.setAttribute('seat', {owner: owner});
+    }
+});
+
+
