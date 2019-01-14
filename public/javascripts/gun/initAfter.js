@@ -37,6 +37,8 @@ function getCamera(){
 }
 
 function setGrid(w, h){
+    // seat = false;
+
     let gridG = sceneG.get('grid');
     gridG.get('width').put( w );
     gridG.get('height').put( h );
@@ -75,11 +77,13 @@ function createGrid( w, h ){
 
             if( !first ){
                 sceneG.get('grid').get('seats').get( id ).get('owner').put('none');
+                namesG.get( name ).get('seat').put('none');
             }
 
         }
     }
     first = false;
+
 }
 
 function resetGrid(){

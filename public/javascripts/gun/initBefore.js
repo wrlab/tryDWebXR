@@ -8,7 +8,7 @@
  * 3] let everyone refresh page.
  */
 const gun = Gun('http://192.168.1.77:3000/gun');
-let version = '0113-2120'
+let version = '0114-1513'
 let sceneG = gun.get('root').get( 'scene'+ version );
 let namesG = gun.get('root').get( 'names'+ version );
 
@@ -42,8 +42,8 @@ function setName(){
 function getNames() {
     let names = [];
     namesG.map().once(( data, key )=>{
-        //console.log( data.name );
-        names.push( data.name );
+        console.log( data.name );
+        //names.push( data.name );
     });
     return names;
 }

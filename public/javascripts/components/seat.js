@@ -21,7 +21,8 @@ AFRAME.registerComponent('seat', {
     update: function (oldData) {
         if( oldData.owner !== this.data.owner){
             if( this.data.owner === name ) { // my seat
-                seat = true;
+                // seat = true;
+                // namesG.get( name ).get()
                 this.el.setAttribute('material', {color: '#ff7158'});
             }else if (this.data.owner === 'none'){
                 this.el.setAttribute('material', {color: '#ffffff' });
@@ -33,16 +34,22 @@ AFRAME.registerComponent('seat', {
     },
 
     remove: function () {
-        this.el.removeEventListener("onclick");
+        this._click = AFRAME.utils.bind(this._click, this);
+        this.el.removeEventListener('click', this._click);
     },
 
     _click : function () {
         let id = this.el.getAttribute('id');
-        console.log(this.data.owner)
-        console.log(seat)
-        if( (this.data.owner === 'none' ) && (seat === false)){
-            sceneG.get('grid').get('seats').get( id ).get('owner').put( name );
-            namesG.get( name ).get('seat').put(id);
+        console.log('owner: '+ this.data.owner);
+        // console.log(seat)
+        if( (this.data.owner === 'none' )){
+            namesG.get( name ).get('seat').once((data, key) => {
+                // console.log(data);
+                if(((data === 'none') || (data === undefined))){
+                    sceneG.get('grid').get('seats').get( id ).get('owner').put( name );
+                    namesG.get( name ).get('seat').put(id);
+                }
+            });
         }
 
 

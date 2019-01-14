@@ -23,7 +23,6 @@ sceneG.get('grid').get('length').on(function( data, key ){
     resetGrid();
     if( data > 0){
         sceneG.get('grid').once((data)=>{
-            console.log(data.width, data.height);
             createGrid(data.width, data.height);
         });
     }
@@ -39,6 +38,7 @@ sceneG.get('grid').get('seats').map().on(function( data, key ){
     }
 });
 
+
 /**
  * synchronize position of balloons without saving at html
  */
@@ -49,8 +49,9 @@ sceneG.get('balloons').map().on(function(data, key){
     if( object !== undefined ) {
         // console.log(object);
         this.get('position').once(function (data) {
-            console.log(data);
+            // console.log(data);
             object.position.copy(data);
         });
     }
 });
+
