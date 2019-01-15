@@ -31,10 +31,13 @@ sceneG.get('grid').get('length').on(function( data, key ){
 
 sceneG.get('grid').get('seats').map().on(function( data, key ){
     let id = key;
-    let owner = data.owner;
+
+
+    // console.log( data.owner );
     let el = document.querySelector('#'+ id );
     if(el){
-        el.setAttribute('seat', {owner: owner});
+        el.setAttribute('seat', { owner: data.owner});
+        el.parentElement.setAttribute('player', {soul: data.soul})
     }
 });
 
@@ -43,15 +46,9 @@ sceneG.get('grid').get('seats').map().on(function( data, key ){
  * synchronize position of balloons without saving at html
  */
 
-sceneG.get('balloons').map().on(function(data, key){
-    let el = document.querySelector('#'+key);
-    let object = el.object3D;
-    if( object !== undefined ) {
-        // console.log(object);
-        this.get('position').once(function (data) {
-            // console.log(data);
-            object.position.copy(data);
-        });
-    }
-});
+// sceneG.get('balloons').map().on( syncPosition );
+sceneG.get('avatars').map().on( syncPosition );
+
+
+
 

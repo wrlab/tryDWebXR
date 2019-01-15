@@ -21,14 +21,13 @@ AFRAME.registerComponent('seat', {
     update: function (oldData) {
         if( oldData.owner !== this.data.owner){
             if( this.data.owner === name ) { // my seat
-                // seat = true;
-                // namesG.get( name ).get()
                 this.el.setAttribute('material', {color: '#ff7158'});
+                //this._createAvatar();
             }else if (this.data.owner === 'none'){
                 this.el.setAttribute('material', {color: '#ffffff' });
             }else{
-                this.el.setAttribute('material', {color: '#a8a8a8' });
-
+                this.el.setAttribute('material', {color: '#737373' });
+                // this._createAvatar();
             }
         }
     },
@@ -39,19 +38,29 @@ AFRAME.registerComponent('seat', {
     },
 
     _click : function () {
-        let id = this.el.getAttribute('id');
-        console.log('owner: '+ this.data.owner);
-        // console.log(seat)
-        if( (this.data.owner === 'none' )){
-            namesG.get( name ).get('seat').once((data, key) => {
+
+        if( this.data.owner === 'none' ){
+            playerG.get( 'seat' ).once((data, key) => {
                 // console.log(data);
-                if(((data === 'none') || (data === undefined))){
-                    sceneG.get('grid').get('seats').get( id ).get('owner').put( name );
-                    namesG.get( name ).get('seat').put(id);
+                if((data === undefined) || (data.owner === 'none')){
+                    this._occupy();
                 }
             });
         }
+        console.log('owner: '+ this.data.owner);
+    },
+
+    _occupy : function () {
+
+        // console.log( 'occupy' );
+        let id = this.el.getAttribute('id');
+        let seatG = sceneG.get('grid').get('seats').get( id );
+        seatG.get('soul').put( soul );
+        seatG.get('owner').put( name )
+        playerG.get('seat').put( seatG );
+
+    },
 
 
-    }
+
 });

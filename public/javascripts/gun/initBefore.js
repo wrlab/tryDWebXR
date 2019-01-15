@@ -3,21 +3,34 @@
 /**
  * HOW TO REFRESH ROOT (fake)
  *
- * 1] change the test to other string on the sourcecode.
+ * 1] change 'Version' to other string on the sourcecode.
  * 2] (optional) restart server.
  * 3] let everyone refresh page.
  */
 const gun = Gun('http://192.168.1.77:3000/gun');
-let version = '0114-1513'
+let version = '0115-1722' ;
 let sceneG = gun.get('root').get( 'scene'+ version );
-let namesG = gun.get('root').get( 'names'+ version );
-
+//let namesG = gun.get('root').get( 'names'+ version );
 
 let name = setName();
-namesG.get( name ).get( 'name' ).put( name );
+let player = {name: name};
+sceneG.get('players').set( player);
+let playerG = sceneG.get('players').map( data=> data.name === name? data: undefined);
+
+let soul;
+function getSoul() {
+    playerG.once(( data, key )=>{
+        // console.log( data, key);
+        soul = key;
+    });
+}
+getSoul();
 
 
-/**
+
+
+
+    /**
  * get name
  */
 function setName(){
@@ -36,14 +49,10 @@ function setName(){
     return name;
 }
 
-/**
- * get names array
- */
-function getNames() {
-    let names = [];
-    namesG.map().once(( data, key )=>{
-        console.log( data.name );
-        //names.push( data.name );
-    });
-    return names;
-}
+
+// function getPlayer(){
+//     sceneG.get('players').map( data=> data.name === name? data: undefined).once(( data, key )=>{
+//         soul = key;
+//         playerG = data;
+//     });
+// }

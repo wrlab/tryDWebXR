@@ -7,6 +7,8 @@ let gridEl = document.querySelector('#grid');
 
 
 
+
+
 /**
  * reset root string of gundb
  */
@@ -24,6 +26,8 @@ let gridEl = document.querySelector('#grid');
 //     namesG.get( name ).get('name').put( name );
 // }
 
+
+
 function getCamera(){
     let cameras = document.querySelectorAll('[camera]');
     let camera;
@@ -37,7 +41,6 @@ function getCamera(){
 }
 
 function setGrid(w, h){
-    // seat = false;
 
     let gridG = sceneG.get('grid');
     gridG.get('width').put( w );
@@ -71,13 +74,21 @@ function createGrid( w, h ){
             let planeEl = document.createElement('a-entity');
             planeEl.setAttribute('id', id);
             planeEl.setAttribute('mixin', 'grid-plane');
-            planeEl.setAttribute('position', { x: width, y: 0, z: height });
             planeEl.setAttribute('seat', {owner: 'none'});
-            gridEl.appendChild(planeEl);
+
+            let playerEl = document.createElement('a-entity');
+            playerEl.setAttribute('player' );
+            // playerEl.setAttribute('id', soul+'-player');
+            playerEl.setAttribute('position', { x: width, y: 0, z: height });
+            gridEl.appendChild(playerEl);
+            playerEl.appendChild(planeEl);
 
             if( !first ){
-                sceneG.get('grid').get('seats').get( id ).get('owner').put('none');
-                namesG.get( name ).get('seat').put('none');
+                // reset ownership
+                let seatG = sceneG.get('grid').get('seats').get( id );
+                seatG.get('owner').put('none');
+                seatG.get('soul').put('none');
+                playerG.get('seat').put( seatG );
             }
 
         }
@@ -85,6 +96,9 @@ function createGrid( w, h ){
     first = false;
 
 }
+
+
+
 
 function resetGrid(){
     gridEl = document.querySelector('#grid');
@@ -96,27 +110,41 @@ function resetGrid(){
     sceneEl.appendChild( gridEl );
 }
 
+
+/**
+ * callback functions for gun
+ */
+
+let syncPosition = function ( data, key ){
+    let el = document.querySelector('#'+key);
+    console.log( key )
+    if(el){
+        let object = el.object3D;
+        if( object !== undefined ) {
+            // console.log(object);
+            this.get('position').once(function (data) {
+                // console.log(data);
+                object.position.copy(data);
+            });
+        }
+    }
+    // console.log( el.object3D );
+
+}
+
 /**
  * initialize position of balloons
  */
 
-sceneG.get('balloons').map().once(function(data, key){
-    let el = document.querySelector('#'+key);
-    let object = el.object3D;
-    if( object !== undefined ) {
-        this.get('position').once(function (data) {
-            el.setAttribute('position', data);
-        });
-    }
-});
 
 sceneG.get('grid').get('seats').map().once(function( data, key ){
     let id = key;
-    let owner = data.owner;
+
+
+    // console.log( data.owner );
     let el = document.querySelector('#'+ id );
     if(el){
-        el.setAttribute('seat', {owner: owner});
+        el.setAttribute('seat', { owner: data.owner});
+        el.parentElement.setAttribute('player', {soul: data.soul})
     }
 });
-
-

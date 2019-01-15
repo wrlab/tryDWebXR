@@ -4,7 +4,7 @@
 AFRAME.registerComponent('transform-controller', {
     schema: {
         enabled: {type: 'boolean', default: false},
-        access: {type: 'string'}
+        type: {type: 'string'},
     },
 
     init: function () {
@@ -40,7 +40,13 @@ AFRAME.registerComponent('transform-controller', {
     },
 
     _change : function(){
-        sceneG.get('balloons').get(this.el.getAttribute('id')).get('position').put(this.object.getWorldPosition());
+        // console.log( this.data.type );
+        // console.log( soul );
+        let id = this.el.getAttribute('id');
+        sceneG.get(this.data.type+'s').get( id ).get('position').put( this.object.position );
+
+    },
+    _attach : function(){
 
     }
 });

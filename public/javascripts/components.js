@@ -1,4 +1,4 @@
 
 // AFrame custom components
-require('./components/balloon.js');
+require('./components/avatar.js');
 require('./components/transform.js');
