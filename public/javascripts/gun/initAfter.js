@@ -117,11 +117,11 @@ function resetGrid(){
 
 let syncPosition = function ( data, key ){
     let el = document.querySelector('#'+key);
-    console.log( key )
+    // console.log( key )
     if(el){
         let object = el.object3D;
         if( object !== undefined ) {
-            // console.log(object);
+            console.log(object);
             this.get('position').once(function (data) {
                 // console.log(data);
                 object.position.copy(data);
@@ -135,7 +135,17 @@ let syncPosition = function ( data, key ){
 /**
  * initialize position of balloons
  */
-
+// sceneG.get('avatars').map().once( function ( data, key ){
+//         let el = document.querySelector('#'+key);
+//         // console.log( key )
+//         if(el){
+//             this.get('position').once(function (data) {
+//                 console.log( data )
+//                 el.setAttribute('position', data);
+//             });
+//         }
+//     }
+// );
 
 sceneG.get('grid').get('seats').map().once(function( data, key ){
     let id = key;
@@ -148,3 +158,5 @@ sceneG.get('grid').get('seats').map().once(function( data, key ){
         el.parentElement.setAttribute('player', {soul: data.soul})
     }
 });
+
+sceneG.get('avatars').map().once( syncPosition );

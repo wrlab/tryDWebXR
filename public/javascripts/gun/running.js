@@ -49,6 +49,8 @@ sceneG.get('grid').get('seats').map().on(function( data, key ){
 // sceneG.get('balloons').map().on( syncPosition );
 sceneG.get('avatars').map().on( syncPosition );
 
+// sceneG.get('avatars').map().once( syncPosition );
+
 
 
 
