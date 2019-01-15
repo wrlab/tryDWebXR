@@ -34,21 +34,9 @@ AFRAME.registerComponent('player', {
 
         let avatarEl = document.createElement('a-entity');
         avatarEl.setAttribute('avatar', {state: 'ready'});
-        // console.log(this.data.soul)
         avatarEl.setAttribute('id', this.data.soul);
-
-
-
-
-
         this.el.appendChild(avatarEl);
-        sceneG.get('avatars').map().get(this.data.soul).once(syncPosition);
-        //
-        // // this.el.parentElement.setAttribute('player', {soul: soul});
-        // this.el.parentElement.appendChild( avatarEl );
-        // // document.querySelector('#grid').appendChild(avatarEl);
-
-
+        sceneG.get('avatars').map().get( this.data.soul ).once( syncPosition );
     }
 
 });

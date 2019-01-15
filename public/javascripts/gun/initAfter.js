@@ -6,28 +6,6 @@ let sceneEl = document.querySelector('a-scene');
 let gridEl = document.querySelector('#grid');
 
 
-
-
-
-/**
- * reset root string of gundb
- */
-
-// function setVersion( v ) {
-//     gun.get('root').get('version').put( v );
-// }
-//
-// function setRoot( data ){
-//     console.log(name);
-//     version = data;
-//
-//     sceneG = gun.get('root').get( 'scene'+ version );
-//     namesG = gun.get('root').get( 'names'+ version );
-//     namesG.get( name ).get('name').put( name );
-// }
-
-
-
 function getCamera(){
     let cameras = document.querySelectorAll('[camera]');
     let camera;
@@ -78,7 +56,6 @@ function createGrid( w, h ){
 
             let playerEl = document.createElement('a-entity');
             playerEl.setAttribute('player' );
-            // playerEl.setAttribute('id', soul+'-player');
             playerEl.setAttribute('position', { x: width, y: 0, z: height });
             gridEl.appendChild(playerEl);
             playerEl.appendChild(planeEl);
@@ -94,11 +71,7 @@ function createGrid( w, h ){
         }
     }
     first = false;
-
 }
-
-
-
 
 function resetGrid(){
     gridEl = document.querySelector('#grid');
@@ -121,36 +94,19 @@ let syncPosition = function ( data, key ){
     if(el){
         let object = el.object3D;
         if( object !== undefined ) {
-            console.log(object);
+            // console.log(object);
             this.get('position').once(function (data) {
                 // console.log(data);
-                object.position.copy(data);
+                if(data !== undefined){
+                    object.position.copy(data);
+                }
             });
         }
     }
-    // console.log( el.object3D );
-
 }
-
-/**
- * initialize position of balloons
- */
-// sceneG.get('avatars').map().once( function ( data, key ){
-//         let el = document.querySelector('#'+key);
-//         // console.log( key )
-//         if(el){
-//             this.get('position').once(function (data) {
-//                 console.log( data )
-//                 el.setAttribute('position', data);
-//             });
-//         }
-//     }
-// );
 
 sceneG.get('grid').get('seats').map().once(function( data, key ){
     let id = key;
-
-
     // console.log( data.owner );
     let el = document.querySelector('#'+ id );
     if(el){
@@ -158,5 +114,3 @@ sceneG.get('grid').get('seats').map().once(function( data, key ){
         el.parentElement.setAttribute('player', {soul: data.soul})
     }
 });
-
-sceneG.get('avatars').map().once( syncPosition );
