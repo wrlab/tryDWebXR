@@ -22,6 +22,7 @@
 
         <script src="javascripts/gun/initBefore.js"></script>
         <script src="javascripts/components/avatar.js"></script>
+        <script src="javascripts/components/bomb.js"></script>
         <script src="javascripts/components/player.js"></script>
         <script src="javascripts/components/seat.js"></script>
         <script src="javascripts/components/transformController.js"></script>
@@ -38,6 +39,9 @@
                 <a-asset-item id="avatar-mtl" src="https://wxr.nyc3.digitaloceanspaces.com/huh/avatar.mtl" crossorigin=”anonymous”></a-asset-item>
                 <a-mixin id ="avatar" avatar obj-model="obj: #avatar-obj; mtl: #avatar-mtl" rotation="0 90 0" scale="0.7 0.7 0.7"></a-mixin>
 
+                <a-asset-item id="bomb-obj" src="https://wxr.nyc3.digitaloceanspaces.com/huh/bomb.obj" crossorigin=”anonymous”></a-asset-item>
+                <a-asset-item id="bomb-mtl" src="https://wxr.nyc3.digitaloceanspaces.com/huh/bomb.mtl" crossorigin=”anonymous”></a-asset-item>
+                <a-mixin id ="bomb-mixin" bomb obj-model="obj: #bomb-obj; mtl: #bomb-mtl" rotation="0 0 0" scale="1 1 1"></a-mixin>
 
                 <a-mixin id = "grid-plane" geometry = "primitive: plane; width: 0.9; height: 0.9" rotation = "-90 0 0"></a-mixin>
 
@@ -51,7 +55,7 @@
 
 
             <a-entity id="grid"></a-entity>
-            <a-entity id="players"></a-entity>
+            <a-entity id="bomb" mixin="bomb-mixin" visible="false" bomb="state: none">
 
 
             <a-marker preset='hiro'>

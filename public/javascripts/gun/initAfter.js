@@ -72,7 +72,6 @@ function createGrid( w, h ){
     }
     first = false;
 }
-
 function resetGrid(){
     gridEl = document.querySelector('#grid');
     if( gridEl ){
@@ -84,10 +83,20 @@ function resetGrid(){
 }
 
 
+function bomb( state ){
+    sceneG.get('bomb').put( state );
+}
+
+
+function createBomb(){
+    // let bombEl = docu
+}
+
 /**
  * callback functions for gun
  */
 
+bomb( 'none' );
 let syncPosition = function ( data, key ){
     let el = document.querySelector('#'+key);
     // console.log( key )

@@ -15,8 +15,6 @@ AFRAME.registerComponent('player', {
 
     update: function (oldData) {
 
-
-
     },
 
     remove: function () {
@@ -28,10 +26,8 @@ AFRAME.registerComponent('player', {
     },
 
     _createAvatar : function (){
-        // todo 좌석에 아바타를 만들어서 세워두기 .
 
         console.log( 'createAvatar : ' + this.data.soul);
-
         let avatarEl = document.createElement('a-entity');
         avatarEl.setAttribute('avatar', {state: 'ready'});
         avatarEl.setAttribute('id', this.data.soul);
