@@ -87,11 +87,6 @@ function bomb( state ){
     sceneG.get('bomb').put( state );
 }
 
-
-function createBomb(){
-    // let bombEl = docu
-}
-
 /**
  * callback functions for gun
  */

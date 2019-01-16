@@ -11,8 +11,13 @@ AFRAME.registerComponent('avatar', {
         this.name = 'avatar';
         this.object = this.el.object3D;
         this.scene = this.el.sceneEl.object3D;
+        this.id = this.el.getAttribute('id');
 
+        this.el.setAttribute('position', {y:0.5});
         this.el.setAttribute('mixin', 'avatar');
+        sceneG.get('players').get(this.id).once((data,key)=>{
+            this.nickname = data.name;
+        });
 
         this._loaded = AFRAME.utils.bind(this._loaded, this);
         this.el.addEventListener('model-loaded', this._loaded);
@@ -32,6 +37,27 @@ AFRAME.registerComponent('avatar', {
     },
 
     _loaded : function(){
+
         sceneG.get('avatars').get(this.el.getAttribute('id')).once( syncPosition );
+        this._nickname();
+    },
+
+    _nickname : function () {
+        sceneG.get('players').get(this.id).once((data,key)=>{
+            this.nickname = data.name;
+        });
+
+        console.log(this.nickname)
+        let nicknameEl = document.createElement('a-text');
+        nicknameEl.setAttribute('shader', 'msdf');
+        nicknameEl.setAttribute('font', "https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json");
+        nicknameEl.setAttribute('color','#000000');
+        nicknameEl.setAttribute('align', 'center');
+        nicknameEl.setAttribute('rotation', {y: -90});
+        nicknameEl.setAttribute('position', {y:0.5});
+        nicknameEl.setAttribute('scale', "0.7 0.7 0.7")
+        nicknameEl.setAttribute('value', this.nickname);
+        this.el.appendChild( nicknameEl );
     }
+
 });

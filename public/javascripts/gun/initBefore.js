@@ -8,7 +8,7 @@
  * 3] let everyone refresh page.
  */
 const gun = Gun('http://192.168.1.77:3000/gun');
-let version = '0115-1722' ;
+let version = '0116-1357' ;
 let sceneG = gun.get('root').get( 'scene'+ version );
 //let namesG = gun.get('root').get( 'names'+ version );
 
@@ -26,11 +26,7 @@ function getSoul() {
 }
 getSoul();
 
-
-
-
-
-    /**
+/**
  * get name
  */
 function setName(){
@@ -39,7 +35,7 @@ function setName(){
         '촉촉한', '게으른', '낮잠자는', '모태솔로'];
     let last = ['허승연', '볼드모트', '박보검', '설현', '헤르미온느',
         '릭', '모티', '보노보노', '다람쥐', '바야바',
-        '해리포터', '알파고', '주커버그', '앨론머스크', '스티브잡스',
+        '해리포터', '알파고', '주커버그', '에밀리', '스티브잡스',
         '유병현', '코토리짱', '피카츄', '꼬북이', '파이리',
         '대머리' ];
 

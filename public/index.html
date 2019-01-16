@@ -10,7 +10,7 @@
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/open.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/later.js"></script>
 
-        <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+        <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
 
 
         <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
@@ -49,6 +49,7 @@
                 <a-mixin id ="yellow" material="color: yellow"></a-mixin>
                 <a-mixin id ="blue" material="color: blue"></a-mixin>
             </a-assets>
+
             <a-sky color="#6EBAA7"></a-sky>
             <a-entity light="type: directional; color: #EEE; intensity: 0.5" position="-1 1 0"></a-entity>
             <a-entity light="type: ambient; color: #CCC"></a-entity>
@@ -56,7 +57,8 @@
 
             <a-entity id="grid"></a-entity>
             <a-entity id="bomb" mixin="bomb-mixin" visible="false" bomb="state: none">
-
+                <a-text value="Hello, World!"></a-text>
+            </a-entity>
 
             <a-marker preset='hiro'>
                 <a-box position='0 0.5 0' material='opacity: 0.5; side: double;color:green;'>
@@ -66,7 +68,8 @@
                 </a-box>
             </a-marker>
 
-            <a-entity id = "camera-setting" rotation="-30 0 0" position="0 3 5">
+
+            <a-entity id = "camera-setting" rotation="-30 0 0" position="0 2 3">
                 <a-entity camera look-controls wasd-controls ></a-entity>
             </a-entity>
 
