@@ -19,7 +19,7 @@
 
     <body>
 
-    <script src="javascripts/gun/initBefore.js"></script>
+        <script src="javascripts/gun/initBefore.js"></script>
         <script src="javascripts/components/avatar.js"></script>
         <script src="javascripts/components/bomb.js"></script>
         <script src="javascripts/components/player.js"></script>
@@ -30,10 +30,6 @@
 
             <!-- asset management system -->
             <a-assets>
-                <a-asset-item id="balloon-obj" src="https://wxr.nyc3.digitaloceanspaces.com/huh/balloon.obj" crossorigin=”anonymous”></a-asset-item>
-                <a-asset-item id="balloon-mtl" src="https://wxr.nyc3.digitaloceanspaces.com/huh/balloon.mtl" crossorigin=”anonymous”></a-asset-item>
-                <a-mixin id ="balloon" obj-model="obj: #balloon-obj" material="roughness: 0.2"></a-mixin>
-
                 <a-asset-item id="avatar-obj" src="https://wxr.nyc3.digitaloceanspaces.com/huh/avatar.obj" crossorigin=”anonymous”></a-asset-item>
                 <a-asset-item id="avatar-mtl" src="https://wxr.nyc3.digitaloceanspaces.com/huh/avatar.mtl" crossorigin=”anonymous”></a-asset-item>
                 <a-mixin id ="avatar" avatar obj-model="obj: #avatar-obj; mtl: #avatar-mtl" rotation="0 90 0" scale="0.7 0.7 0.7"></a-mixin>
@@ -43,10 +39,6 @@
                 <a-mixin id ="bomb-mixin" bomb obj-model="obj: #bomb-obj; mtl: #bomb-mtl" rotation="0 0 0" scale="1 1 1"></a-mixin>
 
                 <a-mixin id = "grid-plane" geometry = "primitive: plane; width: 0.9; height: 0.9" rotation = "-90 0 0"></a-mixin>
-
-                <a-mixin id ="red" material="color: red"></a-mixin>
-                <a-mixin id ="yellow" material="color: yellow"></a-mixin>
-                <a-mixin id ="blue" material="color: blue"></a-mixin>
             </a-assets>
 
             <a-entity light="type: directional; color: #EEE; intensity: 0.5" position="-1 1 0"></a-entity>
