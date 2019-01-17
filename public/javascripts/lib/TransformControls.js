@@ -852,15 +852,19 @@
         }
 
         this.activate = function() {
+            // domElement.addEventListener('triggerdown', onPointerDown, false);
             domElement.addEventListener('mousedown', onPointerDown, false);
             domElement.addEventListener('touchstart', onPointerDown, false);
 
+            // domElement.addEventListener('triggerchanged', onPointerHover, false);
             domElement.addEventListener('mousemove', onPointerHover, false);
             domElement.addEventListener('touchmove', onPointerHover, false);
 
+            // domElement.addEventListener('triggerchanged', onPointerMove, false);
             domElement.addEventListener('mousemove', onPointerMove, false);
             domElement.addEventListener('touchmove', onPointerMove, false);
 
+            // domElement.addEventListener('triggerup', onPointerUp, false);
             domElement.addEventListener('mouseup', onPointerUp, false);
             domElement.addEventListener('mouseout', onPointerUp, false);
             domElement.addEventListener('touchend', onPointerUp, false);
@@ -871,15 +875,19 @@
         this.activate();
 
         this.dispose = function() {
+            // domElement.removeEventListener('triggerdown', onPointerDown);
             domElement.removeEventListener('mousedown', onPointerDown);
             domElement.removeEventListener('touchstart', onPointerDown);
 
+            // domElement.removeEventListener('triggermove', onPointerHover);
             domElement.removeEventListener('mousemove', onPointerHover);
             domElement.removeEventListener('touchmove', onPointerHover);
 
+            // domElement.removeEventListener('triggermove', onPointerMove);
             domElement.removeEventListener('mousemove', onPointerMove);
             domElement.removeEventListener('touchmove', onPointerMove);
 
+            // domElement.removeEventListener('triggerup', onPointerUp);
             domElement.removeEventListener('mouseup', onPointerUp);
             domElement.removeEventListener('mouseout', onPointerUp);
             domElement.removeEventListener('touchend', onPointerUp);

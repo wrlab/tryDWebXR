@@ -67,7 +67,6 @@ function createGrid( w, h ){
                 seatG.get('soul').put('none');
                 playerG.get('seat').put( seatG );
             }
-
         }
     }
     first = false;

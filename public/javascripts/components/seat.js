@@ -15,7 +15,9 @@ AFRAME.registerComponent('seat', {
         this.scene = this.el.sceneEl.object3D;
 
         this._click = AFRAME.utils.bind(this._click, this);
+
         this.el.addEventListener('click', this._click);
+        this.el.addEventListener('triggerup', this._click);
     },
 
     update: function (oldData) {
@@ -33,6 +35,7 @@ AFRAME.registerComponent('seat', {
     remove: function () {
         this._click = AFRAME.utils.bind(this._click, this);
         this.el.removeEventListener('click', this._click);
+        this.el.removeEventListener('triggerup', this._click);
     },
 
     _click : function () {
