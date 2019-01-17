@@ -11,24 +11,22 @@
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/later.js"></script>
 
         <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+        <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 
-
-
-        <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
         <script src="javascripts/lib/TransformControls.js"></script>
 
     </head>
 
     <body>
 
-        <script src="javascripts/gun/initBefore.js"></script>
+    <script src="javascripts/gun/initBefore.js"></script>
         <script src="javascripts/components/avatar.js"></script>
         <script src="javascripts/components/bomb.js"></script>
         <script src="javascripts/components/player.js"></script>
         <script src="javascripts/components/seat.js"></script>
         <script src="javascripts/components/transformController.js"></script>
 
-        <a-scene cursor="rayOrigin: mouse" >
+        <a-scene cursor="rayOrigin: mouse" arjs='sourceType: webcam;'>
 
             <!-- asset management system -->
             <a-assets>
@@ -51,24 +49,18 @@
                 <a-mixin id ="blue" material="color: blue"></a-mixin>
             </a-assets>
 
-            <a-sky color="#6EBAA7"></a-sky>
             <a-entity light="type: directional; color: #EEE; intensity: 0.5" position="-1 1 0"></a-entity>
             <a-entity light="type: ambient; color: #CCC"></a-entity>
 
 
-            <a-entity id="grid"></a-entity>
             <a-entity id="bomb" mixin="bomb-mixin" visible="false" bomb="state: none">
             </a-entity>
 
 
-
-            <a-entity id = "camera-setting" rotation="-30 0 0" position="0 1 2">
+            <a-entity id = "camera-setting" rotation="-30 0 0" position="0 2 3">
                 <a-camera ></a-camera>
                 <a-entity laser-controls line="color: red; opacity: 0.75" windows-motion-controls="hand: right"></a-entity>
             </a-entity>
-
-
-
 
         </a-scene>
 

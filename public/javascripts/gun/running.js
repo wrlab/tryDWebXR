@@ -5,7 +5,7 @@
  */
 sceneG.get('grid').get('length').on(function( data, key ){
 
-    resetGrid();
+    // resetGrid();
     if( data > 0){
         sceneG.get('grid').once((data)=>{
             createGrid(data.width, data.height);

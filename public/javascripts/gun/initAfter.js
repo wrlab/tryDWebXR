@@ -18,6 +18,8 @@ function getCamera(){
     return camera;
 }
 
+
+
 function setGrid(w, h){
 
     let gridG = sceneG.get('grid');
@@ -28,6 +30,21 @@ function setGrid(w, h){
 
 function createGrid( w, h ){
     console.log('create grid');
+    let gridEl = document.createElement('a-entity');
+    gridEl.setAttribute('id', 'grid');
+
+    if( mode === 'ar'){
+        let markerEl = document.createElement('a-marker');
+        sceneEl.appendChild( markerEl );
+        gridEl.setAttribute('rotation', {x:-90});
+        markerEl.appendChild(gridEl);
+    }else{
+        let skyEl = document.createElement('a-sky');
+        skyEl.setAttribute('color', '#6EBAA7');
+        sceneEl.appendChild( skyEl );
+        sceneEl.appendChild(gridEl);
+    }
+
     let maxW, maxH; // initial position
     let intervalW = 1;
     let intervalH = 1;
@@ -73,12 +90,20 @@ function createGrid( w, h ){
 }
 function resetGrid(){
     gridEl = document.querySelector('#grid');
+
+    let parentEl = document.querySelector('a-scene');
+
     if( gridEl ){
-        sceneEl.removeChild( gridEl );
+        parentEl.removeChild( gridEl );
     }
     gridEl = document.createElement('a-entity');
+    if(mode === 'ar'){
+
+
+    }
+
     gridEl.setAttribute('id', 'grid');
-    sceneEl.appendChild( gridEl );
+    parentEl.appendChild( gridEl );
 }
 
 

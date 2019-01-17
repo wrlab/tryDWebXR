@@ -1,9 +1,28 @@
 // it is loaded !before! loading a-scene
+/**
+ * how to set mode
+ *
+ * 1] change mode to ar
+ * 2] paste arjs script
+ */
+let mode = 'ar';
+// <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 
 
 // your local address
 const gun = Gun('http://192.168.1.15:3000/gun', 'http://192.168.86.32:3000/gun');
-let HuhsameAG;
+
+// function setMode( ) {
+//     if(mode === 'ar'){
+//         let arjsEl = document.createElement('script');
+//         arjsEl.setAttribute('id', 'arjs');
+//         arjsEl.setAttribute('src', "https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js");
+//         document.head.appendChild(arjsEl);
+//         console.log('SET AR MODE');
+//     }
+// }
+// setMode();
+
 
 /**
  * HOW TO REFRESH ROOT (fake)
