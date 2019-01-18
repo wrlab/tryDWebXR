@@ -23,11 +23,11 @@ AFRAME.registerComponent('seat', {
     update: function (oldData) {
         if( oldData.owner !== this.data.owner){
             if( this.data.owner === name ) { // my seat
-                this.el.setAttribute('material', {color: '#ff7158'});
+                this.el.setAttribute('material', {color: '#ff5a30'})
             }else if (this.data.owner === 'none'){
-                this.el.setAttribute('material', {color: '#ffffff' });
-            }else{
                 this.el.setAttribute('material', {color: '#737373' });
+            }else{
+                this.el.setAttribute('material', {color: '#BF80FF' });
             }
         }
     },

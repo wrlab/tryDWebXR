@@ -7,11 +7,8 @@
 
         <script src="https://cdn.jsdelivr.net/npm/gun/examples/jquery.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gun/lib/open.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gun/lib/later.js"></script>
 
         <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-        <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 
         <script src="javascripts/lib/TransformControls.js"></script>
 
@@ -49,9 +46,8 @@
             </a-entity>
 
 
-            <a-entity id = "camera-setting" rotation="-30 0 0" position="0 2 3">
-                <a-camera ></a-camera>
-                <a-entity laser-controls line="color: red; opacity: 0.75" windows-motion-controls="hand: right"></a-entity>
+            <a-entity id = "camera-setting" rotation="-30 0 0" position="0 1 4">
+                <a-camera wasd-controls laser-controls></a-camera>
             </a-entity>
 
         </a-scene>

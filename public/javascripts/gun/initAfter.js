@@ -39,6 +39,7 @@ function createGrid( w, h ){
         gridEl.setAttribute('rotation', {x:-90});
         markerEl.appendChild(gridEl);
     }else{
+        console.log('set sky')
         let skyEl = document.createElement('a-sky');
         skyEl.setAttribute('color', '#6EBAA7');
         sceneEl.appendChild( skyEl );

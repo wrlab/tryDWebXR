@@ -52,7 +52,7 @@ AFRAME.registerComponent('avatar', {
         // todo  text 어트리뷰트로 저장하는걸로 바꾸고 코드 한번에 정리하자.
 
         nicknameEl.setAttribute('shader', 'msdf');
-        nicknameEl.setAttribute('font', "https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Regular.json");
+        nicknameEl.setAttribute('font', "https://raw.githubusercontent.com/myso-kr/aframe-fonts-korean/master/fonts/ofl/nanumgothic/NanumGothic-Bold.json");
         nicknameEl.setAttribute('color','#000000');
         nicknameEl.setAttribute('align', 'center');
         nicknameEl.setAttribute('rotation', {y: -90});

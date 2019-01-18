@@ -5,12 +5,14 @@
  * 1] change mode to ar
  * 2] paste arjs script
  */
-let mode = 'ar';
+let mode;
 // <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+
+//                 <a-entity laser-controls line="color: red; opacity: 0.75" oculus-touch-controls="hand: right"  ></a-entity>
 
 
 // your local address
-const gun = Gun('http://192.168.1.15:3000/gun', 'http://192.168.86.32:3000/gun');
+const gun = Gun('http://192.168.1.15:3000/gun');
 
 // function setMode( ) {
 //     if(mode === 'ar'){
@@ -31,7 +33,7 @@ const gun = Gun('http://192.168.1.15:3000/gun', 'http://192.168.86.32:3000/gun')
  * 2] (optional) restart server.
  * 3] let everyone refresh page.
  */
-let version = '0117-2027' ;
+let version = '0118-1535' ;
 
 let sceneG = gun.get('root').get( 'scene'+ version );
 
