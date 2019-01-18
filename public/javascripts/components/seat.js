@@ -17,7 +17,7 @@ AFRAME.registerComponent('seat', {
         this._click = AFRAME.utils.bind(this._click, this);
 
         this.el.addEventListener('click', this._click);
-        this.el.addEventListener('triggerup', this._click);
+        //this.el.addEventListener('triggerup', this._click);
     },
 
     update: function (oldData) {
@@ -39,6 +39,7 @@ AFRAME.registerComponent('seat', {
     },
 
     _click : function () {
+        console.log('click');
 
         if( this.data.owner === 'none' ){
             playerG.get( 'seat' ).once((data, key) => {

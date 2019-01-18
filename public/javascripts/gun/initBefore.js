@@ -33,7 +33,7 @@ const gun = Gun('http://192.168.1.15:3000/gun');
  * 2] (optional) restart server.
  * 3] let everyone refresh page.
  */
-let version = '0118-1535' ;
+let version = '0118-1613' ;
 
 let sceneG = gun.get('root').get( 'scene'+ version );
 
