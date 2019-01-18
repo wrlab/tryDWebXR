@@ -107,23 +107,17 @@ function resetGrid(){
     parentEl.appendChild( gridEl );
 }
 
-
-function bomb( state ){
-    sceneG.get('bomb').put( state );
-}
-
 /**
  * callback functions for gun
  */
 
-bomb( 'none' );
+
 let syncPosition = function ( data, key ){
     let el = document.querySelector('#'+key);
     // console.log( key )
     if(el){
         let object = el.object3D;
         if( object !== undefined ) {
-            // console.log(object);
             this.get('position').once(function (data) {
                 // console.log(data);
                 if(data !== undefined){

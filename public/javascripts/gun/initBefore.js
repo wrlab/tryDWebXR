@@ -8,22 +8,11 @@
 let mode;
 // <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 
-//                 <a-entity laser-controls line="color: red; opacity: 0.75" oculus-touch-controls="hand: right"  ></a-entity>
+// <a-entity laser-controls line="color: red; opacity: 0.75" oculus-touch-controls="hand: right"  ></a-entity>
 
 
 // your local address
 const gun = Gun('http://192.168.1.15:3000/gun');
-
-// function setMode( ) {
-//     if(mode === 'ar'){
-//         let arjsEl = document.createElement('script');
-//         arjsEl.setAttribute('id', 'arjs');
-//         arjsEl.setAttribute('src', "https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js");
-//         document.head.appendChild(arjsEl);
-//         console.log('SET AR MODE');
-//     }
-// }
-// setMode();
 
 
 /**
@@ -45,7 +34,6 @@ let playerG = sceneG.get('players').map( data=> data.name === name? data: undefi
 let soul;
 function getSoul() {
     playerG.once(( data, key )=>{
-        // console.log( data, key);
         soul = key;
     });
 }
@@ -70,10 +58,3 @@ function setName(){
     return name;
 }
 
-
-// function getPlayer(){
-//     sceneG.get('players').map( data=> data.name === name? data: undefined).once(( data, key )=>{
-//         soul = key;
-//         playerG = data;
-//     });
-// }

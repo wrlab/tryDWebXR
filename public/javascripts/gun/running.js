@@ -24,10 +24,6 @@ sceneG.get('grid').get('seats').map().on(function( data, key ){
     }
 });
 
-// sceneG.get('bomb').on( function( data, key ){
-//     let bombEl = document.querySelector('#bomb');
-//     bombEl.setAttribute('bomb', { state: data });
-// });
 
 /**
  * synchronize position
