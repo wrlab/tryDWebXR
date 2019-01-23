@@ -24,13 +24,8 @@ sceneG.get('grid').get('seats').map().on(function( data, key ){
     }
 });
 
-
 /**
  * synchronize position
  */
 
 sceneG.get('avatars').map().on( syncPosition );
-
-
-
-
