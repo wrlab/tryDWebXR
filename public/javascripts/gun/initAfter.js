@@ -35,6 +35,7 @@ function createGrid( w, h ){
 
     if( mode === 'ar'){
         let markerEl = document.createElement('a-marker');
+        markerEl.setAttribute('preset', 'hiro');
         sceneEl.appendChild( markerEl );
         gridEl.setAttribute('rotation', {x:-90});
         markerEl.appendChild(gridEl);

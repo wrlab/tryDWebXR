@@ -4,6 +4,9 @@
 # gun
 radata/
 
+#key
+keys/
+
 # Logs
 logs
 *.log

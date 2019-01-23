@@ -5,8 +5,16 @@
  */
 
 var app = require('../app');
+var apphttp = require('../apphttp');
 var debug = require('debug')('aframe-gundb:server');
+var fs = require('fs');
 var http = require('http');
+var https = require('https');
+
+const options = {
+  key: fs.readFileSync('./keys/dwxr.vm.wrl.onl.v3.key'),
+  cert: fs.readFileSync('./keys/dwxr.vm.wrl.onl.v3.crt')
+};
 
 var Gun = require('gun');
 
@@ -14,20 +22,27 @@ var Gun = require('gun');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort( '3001');
+var httpPort = normalizePort('3000')
 app.set('port', port);
+apphttp.set('port', httpPort);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
-var gun = Gun({web: server});
+var httpServer = http.createServer(apphttp);
+var server = https.createServer(options, app);
+
+
+var gun1 = Gun({web: server});
+var gun2 = Gun({web: httpServer});
+
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-
+httpServer.listen(httpPort);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
