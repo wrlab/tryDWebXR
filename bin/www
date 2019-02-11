@@ -12,8 +12,8 @@ var http = require('http');
 var https = require('https');
 
 const options = {
-  key: fs.readFileSync('./keys/dwxr.vm.wrl.onl.v3.key'),
-  cert: fs.readFileSync('./keys/dwxr.vm.wrl.onl.v3.crt')
+  key: fs.readFileSync('./keys/privkey.pem'),
+  cert: fs.readFileSync('./keys/fullchain.pem')
 };
 
 var Gun = require('gun');
@@ -23,7 +23,7 @@ var Gun = require('gun');
  */
 
 var port = normalizePort( '3001');
-var httpPort = normalizePort('3000')
+var httpPort = normalizePort('3000');
 app.set('port', port);
 apphttp.set('port', httpPort);
 
@@ -36,7 +36,7 @@ var server = https.createServer(options, app);
 
 
 var gun1 = Gun({web: server});
-var gun2 = Gun({web: httpServer});
+// var gun2 = Gun({web: httpServer});
 
 
 /**

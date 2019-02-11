@@ -12,21 +12,13 @@ let mode ;
 
 
 
-
-
-
-
-
-
 let gun;
 if(window.location.href.startsWith('https')){
     gun = Gun( 'https://dwxr.vm.wrl.onl:3001/gun');
+    console.log('https://dwxr.vm.wrl.onl:3001/gun')
 }else{
     gun = Gun( 'http://dwxr.vm.wrl.onl:3000/gun');
 }
-
-
-
 
 
 // const gun = Gun('http://dwxr.vm.wrl.onl:3000/gun','https://dwxr.vm.wrl.onl:3001/gun');
@@ -39,7 +31,7 @@ if(window.location.href.startsWith('https')){
  * 2] (optional) restart server.
  * 3] let everyone refresh page.
  */
-let version = '0124-0059' ;
+let version = '0211-1837' ;
 
 let sceneG = gun.get('root').get( 'scene'+ version );
 
